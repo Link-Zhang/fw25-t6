@@ -1,0 +1,18 @@
+
+config wifi-device 'radio0'
+	option band '5g'
+	option cell_density '0'
+	option channel 'auto'
+	option country 'CN'
+	option htmode 'HE160'
+	option path 'fe180000.pcie/pci0003:30/0003:30:00.0/0003:31:00.0'
+	option txpower '22'
+	option type 'mac80211'
+
+config wifi-iface 'wifinet0'
+	option device 'radio0'
+	option encryption 'psk2'
+	option key 'S74390E2'
+	option mode 'sta'
+	option network 'wlan'
+	option ssid 'Link-And-Karen-5G'

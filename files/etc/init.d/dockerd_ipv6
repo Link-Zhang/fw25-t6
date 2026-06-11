@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+
+START=95
+
+start() {
+#	echo "Fixing docker ipv6..."
+#	local DOCKER_IPV6_SUBNET="fd00:ac1f:dc::/120"
+#	local IPV6_GATEWAY="fe80::6a77:24ff:fe25:bda6"
+#	local NETWORK_DEVICE="eth1"
+#	local ROUTE_METRIC="1024"
+#	if ! ip link show "$NETWORK_DEVICE" >/dev/null 2>&1; then
+#		echo "No $NETWORK_DEVICE exist"
+#		return 1
+#	fi
+#	ip6tables -t nat -D POSTROUTING -s "$DOCKER_IPV6_SUBNET" -j MASQUERADE >/dev/null 2>&1
+#	if ! ip6tables -t nat -A POSTROUTING -s "$DOCKER_IPV6_SUBNET" -j MASQUERADE; then
+#		echo "Failed to add ip6tables nat rule"
+#		return 1
+#	fi
+#	ip -6 route del default via "$IPV6_GATEWAY" dev "$NETWORK_DEVICE" metric "$ROUTE_METRIC" >/dev/null 2>&1
+#	if ! ip -6 route add default via "$IPV6_GATEWAY" dev "$NETWORK_DEVICE" metric "$ROUTE_METRIC"; then
+#		echo "Failed to add ipv6 default route"
+#		return 1
+#	fi
+#	echo "Fix successful"
+	return 0
+}

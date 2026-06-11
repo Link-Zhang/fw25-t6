@@ -1,0 +1,9 @@
+===========================================
+CONFIG_DEFAULT_dnsmasq=y
+TO
+CONFIG_DEFAULT_dnsmasq-full=y
+
+CONFIG_DEFAULT_kmod-r8169=y
+TO
+CONFIG_DEFAULT_kmod-r8169=n
+===========================================

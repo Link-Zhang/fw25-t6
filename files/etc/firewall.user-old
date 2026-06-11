@@ -1,0 +1,212 @@
+# This file is interpreted as shell script.
+# Put your custom iptables rules here, they will
+# be executed with each firewall (re-)start.
+
+# Internal uci firewall chains are flushed and recreated on reload, so
+# put custom rules into the root chains e.g. INPUT or FORWARD or into the
+# special user chains, e.g. input_wan_rule or postrouting_lan_rule.
+
+
+
+#iptables -I INPUT -s 2.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 2.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 4.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 4.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 12.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 12.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 16.0.0.0/5 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 16.0.0.0/5 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 28.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 28.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 32.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 32.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 45.128.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 45.128.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 45.192.0.0/11 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 45.192.0.0/11 -j DROP -m comment --comment 'dropbear'
+
+#China
+#iptables -I INPUT -s 47.95.0.0/16 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 47.95.0.0/16 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 62.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 62.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 64.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 64.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 68.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 68.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 72.0.0.0/5 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 72.0.0.0/5 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 81.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 81.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 84.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 84.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 88.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 88.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 92.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 92.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 94.192.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 94.192.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 95.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 95.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 104.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 104.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#China
+#iptables -I INPUT -s 116.7.0.0/16 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 116.7.0.0/16 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 128.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 128.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 129.226.0.0/13 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 129.226.0.0/13 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 134.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 134.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 134.192.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 134.192.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 137.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 137.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 138.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 138.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 139.32.0.0/11 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 139.32.0.0/11 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 139.160.0.0/13 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 139.160.0.0/13 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 141.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 141.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 142.88.0.0/13 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 142.88.0.0/13 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 146.128.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 146.128.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 147.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 147.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 151.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 151.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 152.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 152.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 154.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 154.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 157.224.0.0/12 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 157.224.0.0/12 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 157.240.0.0/13 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 157.240.0.0/13 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 159.80.0.0/12 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 159.80.0.0/12 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 159.192.0.0/11 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 159.192.0.0/11 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 161.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 161.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 162.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 162.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 164.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 164.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 165.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 165.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 165.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 165.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 167.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 167.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 167.160.0.0/12 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 167.160.0.0/12 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 170.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 170.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 172.96.0.0/11 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 172.96.0.0/11 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 172.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 172.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 176.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 176.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 184.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 184.0.0.0/6 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 188.160.0.0/11 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 188.160.0.0/11 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 192.64.0.0/11 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 192.64.0.0/11 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 192.104.0.0/13 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 192.104.0.0/13 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 192.240.0.0/12 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 192.240.0.0/12 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 193.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 193.0.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 193.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 193.128.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 194.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 194.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 196.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 196.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 198.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 198.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 198.192.0.0/10 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 198.192.0.0/10 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 199.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 199.0.0.0/9 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 204.64.0.0/12 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 204.64.0.0/12 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 206.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 206.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 208.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 208.0.0.0/7 -j DROP -m comment --comment 'dropbear'
+
+#iptables -I INPUT -s 213.0.0.0/8 -j DROP -m comment --comment 'dropbear'
+#iptables -I FORWARD -s 213.0.0.0/8 -j DROP -m comment --comment 'dropbear'

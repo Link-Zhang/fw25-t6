@@ -1,0 +1,30 @@
+
+config dnsmasq
+	option cachesize '8192'
+	option dnsseccheckunsigned '0'
+	option dnsseccheckunsigned '0'
+	option domainneeded '1'
+	option rebind_protection '1'
+	option rebind_localhost '1'
+	option localservice '1'
+	option localise_queries '1'
+	option nonegcache '1'
+
+config dhcp 'lan'
+	option ignore '1'
+	option interface 'lan'
+	option interface 'lan6'
+	option interface 'wlan'
+	option interface 'wlan6'
+
+config dhcp 'wan'
+	option ignore '1'
+	option interface 'wan'
+	option interface 'wan6'
+	option interface 'wwan'
+
+config odhcpd 'odhcpd'
+	option maindhcp '0'
+	option leasefile '/tmp/hosts/odhcpd'
+	option leasetrigger '/usr/sbin/odhcpd-update'
+	option loglevel '4'

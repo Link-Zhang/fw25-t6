@@ -1,0 +1,51 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=10
+
+start() {
+	echo "Mounting nvme..."
+	local timeout=30
+	while [ ! -b /dev/nvme0n1p1 ] && [ $timeout -gt 0 ]; do
+		sleep 1
+		timeout=$((timeout - 1))
+	done
+	if [ ! -b /dev/nvme0n1p1 ]; then
+		echo "Not found /dev/nvme0n1p1"
+		return 1
+	fi
+	if mountpoint -q /mnt/nvme0n1p1; then
+		echo "Already mounted"
+		return 0
+	fi
+	mkdir -p /mnt/nvme0n1p1 2>/dev/null
+	if mount -t exfat /dev/nvme0n1p1 /mnt/nvme0n1p1 -o rw,noatime,umask=0000,dmask=0000,fmask=0000 2>/dev/null; then
+		echo "Mount successful"
+		return 0
+	else
+		echo "Mount failed"
+		return 1
+	fi
+}
+
+stop() {
+	echo "Unmounting nvme..."
+	if mount | grep -q '/mnt/nvme0n1p1'; then
+		if umount /mnt/nvme0n1p1 2>/dev/null; then
+			echo "Unmount successful"
+			return 0
+		else
+			echo "Normal unmount failed, trying force..."
+			if umount -f /mnt/nvme0n1p1 2>/dev/null; then
+				echo "Force unmount successful"
+				return 0
+			else
+				echo "Force unmount failed"
+				return 1
+			fi
+		fi
+	else
+		echo "Not mounted, nothing to do"
+		return 0
+	fi
+}
