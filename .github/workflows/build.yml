@@ -1,0 +1,97 @@
+name: build fw
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  UPLOAD_DL_DIR: false
+  WORK_DIR: /mnt/workdir
+
+jobs:
+  prepare_release:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Get release tag
+      id: release_tag
+      run: |
+        release_tag="FriendlyWrt-$(date +%Y-%m-%d-%H%M)"
+        echo "release_tag=$release_tag" >> $GITHUB_OUTPUT
+
+    - name: Create empty release
+      id: release
+      uses: softprops/action-gh-release@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.release_tag.outputs.release_tag }}
+        draft: false
+        prerelease: false
+    outputs:
+      release_tag: ${{ steps.release_tag.outputs.release_tag }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
+
+  build_friendlywrt:
+    needs: prepare_release
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        VERSION: ['25.12']
+        SET: [docker]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Change work dir
+        run: |
+          sudo mkdir -p ${{ env.WORK_DIR }}
+          sudo chown $USER:$GROUPS ${{ env.WORK_DIR }}
+          cd "$GITHUB_WORKSPACE"
+          cp -r . "${{ env.WORK_DIR }}/"
+
+      - name: Initialization environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          cd ${{ env.WORK_DIR }}
+          sudo rm -rf /etc/apt/sources.list.d
+          wget https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh
+          sed -i -e 's/^apt-get -y install openjdk-8-jdk/# apt-get -y install openjdk-8-jdk/g' install.sh
+          sed -i -e 's/^\[ -d fa-toolchain \]/# [ -d fa-toolchain ]/g' install.sh
+          sed -i -e 's/^(cat fa-toolchain/# (cat fa-toolchain/g' install.sh
+          sed -i -e 's/^(tar xf fa-toolchain/# (tar xf fa-toolchain/g' install.sh
+          sudo -E bash ./install.sh
+          sudo -E git config --global user.name 'GitHub Actions'
+          sudo -E git config --global user.email 'noreply@github.com'
+          sudo -E git config --global color.ui false
+          git clone https://github.com/friendlyarm/repo
+          sudo -E cp repo/repo /usr/bin/
+          mkdir -p ./artifact
+          sudo swapoff -a
+          sudo swapoff -a || true
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk /usr/local/share/boost /opt/ghc 2>/dev/null || true
+          echo "cores: $(nproc)"
+
+      - name: Download source
+        run: |
+          cd ${{ env.WORK_DIR }}
+          mkdir project
+          cd project
+          repo init --depth=1 -u https://github.com/friendlyarm/friendlywrt_manifests -b master-v${{ matrix.VERSION }} \
+                  -m rk3399.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle
+          repo sync -c friendlywrt --no-clone-bundle
+          repo sync -c configs --no-clone-bundle
+          repo sync -c device/common --no-clone-bundle
+          repo sync -c device/friendlyelec --no-clone-bundle
+          repo sync -c scripts --no-clone-bundle
+          repo sync -c scripts/sd-fuse  --no-clone-bundle
+          repo sync -c toolchain  --no-clone-bundle
+
+      - name: Apply customizations
+        run: |
+          cd ${{ env.WORK_DIR }}/project
+#          source ../scripts/add_packages.sh
+#          source ../scripts/customer_config.sh
